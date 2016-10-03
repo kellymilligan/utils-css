@@ -1,0 +1,35 @@
+/* up to normal ratio (4:3) */
+@media only screen and (max-aspect-ratio: 4/3) {
+
+    /* rules... */
+    /* ... */
+    /* ... */
+
+}
+
+/* above normal and up to widescreen ratio (16:9) */
+@media only screen and (min-aspect-ratio: 4/3) and (max-aspect-ratio: 16/9) {
+
+    /* rules... */
+    /* ... */
+    /* ... */
+
+}
+
+/* above widescreen and up to superwidescreen ratio (21:9) */
+@media only screen and (min-aspect-ratio: 16/9) and (max-aspect-ratio: 21/9) {
+
+    /* rules... */
+    /* ... */
+    /* ... */
+
+}
+
+/* above superwidescreen ratio (21:9) */
+@media only screen and (min-aspect-ratio: 21/9) {
+
+    /* rules... */
+    /* ... */
+    /* ... */
+
+}

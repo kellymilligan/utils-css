@@ -1,0 +1,40 @@
+@ar-normal: ~"4/3";
+@ar-widescreen: ~"16/9";
+@ar-superwidescreen: ~"21/9";
+
+// USAGE:
+// .aspectratio( normal, {
+//     background: red;
+// });
+
+.aspect-ratio(@point, @rules) {
+
+    // up to normal ratio (4:3)
+    & when(@point = normal) {
+        @media only screen and (max-aspect-ratio: @ar-normal) {
+            @rules();
+        }
+    }
+
+    // above normal and up to widescreen ratio (16:9)
+    & when(@point = widescreen) {
+        @media only screen and (min-aspect-ratio: @ar-normal) and (max-aspect-ratio: @ar-widescreen) {
+            @rules();
+        }
+    }
+
+    // above widescreen and up to superwidescreen ratio (21:9)
+    & when(@point = superwidescreen) {
+        @media only screen and (min-aspect-ratio: @ar-widescreen) and (max-aspect-ratio: @ar-superwidescreen) {
+            @rules();
+        }
+    }
+
+    // above superwidescreen ratio (21:9)
+    & when(@point = abovesuperwidescreen) {
+        @media only screen and (min-aspect-ratio: @ar-superwidescreen) {
+            @rules();
+        }
+    }
+    
+}

@@ -1,0 +1,42 @@
+// TRANSLATED FROM LESS TO SCSS - NEEDS TESTING...
+
+$ar-normal: #{4/3};
+$ar-widescreen: #{16/9};
+$ar-superwidescreen: #{21/9};
+
+// USAGE:
+// @include aspect-ratio( widescreen ) {
+//     background: red;
+// }
+
+@mixin aspect-ratio($point) {
+
+    // up to normal ratio (4:3)
+    @if $point == normal {
+        @media only screen and (max-aspect-ratio: $ar-normal) {
+            @content;
+        }
+    }
+
+    // above normal and up to widescreen ratio (16:9)
+    @if $point == widescreen {
+        @media only screen and (min-aspect-ratio: $ar-normal) and (max-aspect-ratio: $ar-widescreen) {
+            @content;
+        }
+    }
+
+    // above widescreen and up to super widescreen ratio (21:9)
+    @if $point == superwidescreen {
+        @media only screen and (min-aspect-ratio: $ar-widescreen) and (max-aspect-ratio: $ar-superwidescreen) {
+            @content;
+        }
+    }
+
+    // above super widescreen (21:9)
+    @if $point == abovesuperwidescreen {
+        @media only screen and (min-aspect-ratio: $ar-superwidescreen) {
+            @content;
+        }
+    }
+
+}
