@@ -1,0 +1,105 @@
+// Units
+// -----
+
+/*
+    Converts PX units into REM units based on a 10px base.
+    Also applies a fallback px versoin for unsupported browsers.
+    Pass the rule name as the first parameter, followed by the
+    px value that you want to apply.
+    ---
+    USAGE:
+    .px-to-rem( font-size, 24px );
+ */
+.px-to-rem( @property: "margin-bottom", @value: 0 ) {
+
+    @pxValue:  unit(@value, px);
+    @remValue: unit(@value / 10, rem);
+    @{property}: @pxValue;
+    @{property}: @remValue;
+
+}
+
+
+// Localisation
+// ------------
+
+/*
+    Apply styles only when the matching language class is on the html element
+    ---
+    USAGE:
+    .language( ru, {
+       background: red;
+    });
+*/
+.language( @countryCode, @rules ) {
+
+    .language-@{countryCode} & {
+
+        @rules();
+    }
+}
+
+
+// Images
+// ------
+
+/*
+    Applies the appropriate background image depending on the
+    device resolution. Add _2x to the high-res version's filename.
+    ---
+    USAGE:
+    .retina-bg-image( '../img/background.jpg', 'jpg' );
+*/
+.retina-bg-image( @file, @type ) {
+
+    background-image: url('@{file}.@{type}');
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    @media (-webkit-min-device-pixel-ratio: 1.25),
+           (-o-min-device-pixel-ratio: 1.25/1),
+           (min--moz-device-pixel-ratio: 1.25),
+           (-moz-min-device-pixel-ratio: 1.25),
+           (-ms-min-device-pixel-ratio: 1.25),
+           (min-device-pixel-ratio: 1.25),
+           (min-resolution: 120dpi),
+           (min-resolution: 1.25dppx) {
+
+        background-image: url('@{file}_2x.@{type}');
+
+    }
+}
+
+
+// Layout
+// ------
+
+/*
+    Cross compatible centering method for when flexbox doesn't meet
+    browser support specficiations.
+    Add 'display: inline-block;' and 'vertical-align: middle;' to child
+    elements you wish to vertically center.
+    ---
+    USAGE:
+    .el {
+        .add-vertical-centering();
+        .child-el {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+*/
+.add-vertical-centering() {
+
+    &::before {
+
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 0;
+        height: 100%;
+        margin-right: -0.3em;
+
+    }
+
+}

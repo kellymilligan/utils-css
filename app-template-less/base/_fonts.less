@@ -1,0 +1,47 @@
+// Font configuration
+// ------------------
+
+@fontfallback: "Helvetica", "Arial", sans-serif;
+
+.font-smoothing() {
+
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+
+}
+
+
+// Font faces
+// ----------
+
+/*
+    Set up separate mixins for each custom @font-face declaration in _fontface.less
+    ---
+    e.g:
+
+    .font-fontname-bold() {
+
+        font-family: 'Font Name Bold', @fontfallback;
+        font-weight: normal;
+        font-style: normal;
+
+    }
+*/
+
+
+// Font mixins
+// -----------
+
+/*
+    Use the font face mixins from above to establish common component mixins
+    ---
+    e.g:
+
+    .font-desktop-title() {
+
+        .font-fontname-bold();
+        .px-to-rem( font-size, 30px );
+        line-height: 1;
+
+    }
+*/

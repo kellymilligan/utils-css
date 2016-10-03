@@ -1,0 +1,107 @@
+/*
+    Document styles should be generic, element based rules that are considered
+    fixed between projects. They apply to all elements within the DOM and should
+    be overwritten by more specific rules in module stylesheets where necessary.
+
+    Consider these additional "reset" or "normalize" rules.
+*/
+
+// Selection
+// ---------
+* {
+
+    // Prevent user selection of all items
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+}
+input,
+textarea {
+
+    // Allow user selection within text form controls
+    user-select: text;
+
+}
+
+// Scrolling
+// ---------
+html {
+
+    // Add a perpetual vertical scroll-bar to the window
+    overflow-y: scroll;
+
+}
+
+// Box sizing
+// ----------
+html {
+
+    // Enforce border-box on ALL elements and pseudo elements
+    box-sizing: border-box;
+
+    *, *::before, *::after {
+
+        box-sizing: inherit;
+
+    }
+
+}
+
+// Sizing
+// ------
+html {
+
+    // REM unit base (e.g. 2.4rem = 24px)
+    font-size: 10px;
+
+}
+
+// Images
+// ------
+img {
+
+    display: block;
+
+}
+body > img {
+
+    // Prevent image preloading from flickering scrollbars
+    max-width: 50%;
+    max-height: 50%;
+
+}
+
+// Typography
+// ----------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+a {
+
+    // Establish a style inheritance chain for all typographic elements
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+
+}
+
+// Lists
+// -----
+ul,
+ol {
+
+    // Remove default list styling
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
